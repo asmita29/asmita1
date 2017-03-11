@@ -1,0 +1,279 @@
+<?php
+require_once 'func1.php';
+$msg="";
+if(isset($_REQUEST['sub1']))
+{
+	$uid=$_REQUEST['uid'];
+	$name=$_REQUEST['name'];
+	$pwd=$_REQUEST['pwd'];
+	$sq=$_REQUEST['sq'];
+	$ans=$_REQUEST['ans'];
+	$gender=$_REQUEST['gender'];
+	$addr=$_REQUEST['addr'];
+	$mob=$_REQUEST['mob'];
+	$email=$_REQUEST['email'];
+	$day=$_REQUEST['day'];
+	$month=$_REQUEST['month'];
+	$year=$_REQUEST['year'];
+	$dob="$day-$month-$year";
+	
+	$msg=addnewuser($uid,$name,$pwd,$sq,$ans,$gender,$addr,$mob,$email,$dob);
+	}
+?>
+<html>
+<head>
+<title>magnum wedding planner</title>
+<link href="file.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript">
+function clearText(field)
+{
+    if (field.defaultValue == field.value) field.value = '';
+    else if (field.value == '') field.value = field.defaultValue;
+}
+</script>
+</head>
+<body>
+<div id="templatemo_header_wrapper">
+  <div id="templatemo_header">
+    
+   	<div id="site_logo"></div>
+        
+		<div id="templatemo_menu">
+      		<div id="templatemo_menu_left"></div>
+            <ul>
+                  <li><a href="home.php" class="current">Home</a></li>
+                  <li><a href=">Services</a></li>
+                  <li><a href="gallary.php">Gallery</a></li>
+				  <li><a href="login.php">Login</a></li>
+                <li><a href="registration.php">Sign Up</a></li>
+                  <li><a href="#" class="last">Contact</a></li>
+            </ul>    	
+		</div> 
+    
+    </div>  
+</div> 
+
+<div id="templatemo_banner_wrapper">
+	<div id="templatemo_banner">
+    
+    	<div id="templatemo_banner_image">
+        	<div id="templatemo_banner_image_wrapper">
+            	<img src="image2.jpg" alt="image 1" />
+            </div>
+        </div>
+        
+        <div id="templatemo_banner_content">
+        	<div class="header_01">Your vision. Our innovation. Wedding solutions</h2></div></td> </div>
+            <p>"Falling in love was the easy part;<br>Planning a Wedding? Don't Worry<br>...Assign it to us!!!"</p>
+        </div>	
+    
+    	<div class="cleaner"></div>
+    </div> <!-- end of banner -->
+</div> <!-- end of banner wrapper -->
+
+<div id="templatemo_content_wrapper">
+	<div id="templatemo_content">
+    
+    	<div id="column_w530">
+        	<table align=left>
+<tr><td>
+<h1><font color=#566573 >
+Create New Account
+</u></font></h1></td></tr>
+</table>
+<form name=f2 method=post >
+<table bgcolor=#e5e8e8 align=left>
+<td>
+<font color=#1b2631>
+Name:</td>
+<td></font>
+<input type=text size=20 maxlength=30 placeholder="First Name" name="name" id="n1">
+</td></tr>
+<tr><td>
+<font color=#1b2631>
+Username:
+</font></h2></td><td>
+<input type=text size=20 maxlength=30 placeholder="User name" name="uid" id="u1">
+</td></tr>
+<tr><td >
+<font color=#1b2631>
+Address:
+</font></td><td>
+<textarea rows=3 cols=25 name=addr >
+</textarea>
+</td></tr>
+<tr><td>
+<font color=#1b2631>
+Mobile:
+</font></h2></td><td>
+<input type=text size=20 maxlength=30 placeholder="mobile number" name="mob" id="m1" onclick="return mobile1(this.value)">
+<div id="div4"></div>
+</td></tr>
+<tr><td>
+<font color=#1b2631>
+email:
+</font></h2></td><td>
+<input type=text size=20 maxlength=30 placeholder="email" name="email" id="e1">
+</td></tr>
+<tr><td>
+<font color=#1b2631>
+gender:
+</font></h2></td><td>
+<input type=radio value="Male" name="gender">Male
+<input type=radio value="Female" name="gender">Female
+</td></tr>
+<tr><td >
+<font color=#1b2631>
+DOB:
+</font></h2></td><td>
+<select name=day id="da1" >
+<option>Day</option>
+<?php 
+for($i=1;$i<=31;$i++)
+	echo "<option>$i</option>"
+?>
+</select>
+<select name=month id="mo1" >
+<option>Month</option>
+<?php 
+for($i=1;$i<=12;$i++)
+	echo "<option>$i</option>"
+?>
+</select>
+<select name=year id="ya1" >
+<option>Year</option>
+<?php 
+for($i=1940;$i<=2020;$i++)
+	echo "<option>$i</option>"
+?>
+</select>
+</td>
+</tr>
+<tr><td>
+<font color=#1b2631>
+Password:
+</font></h2></td><td>
+<input type=password size=20 maxlength=30 placeholder="password here" name="pwd" id="p1" onkeyup="return pwdstrength(this.value)">
+<div id="div2"></div>
+</td></tr>
+<tr><td>
+<font color=#1b2631>
+Confirm Password:
+</font>
+</h2></td><td>
+<input type=password size=20 maxlength=30 placeholder="password here" name="cpwd" id="p2" onblur="return chk_cnfpw(this.value)">
+<div id="div3"></div>
+</td></tr>
+<tr><td>
+<font color=#1b2631>
+Security question
+</font></h2></td><td>
+<select name="sq">
+<option>Select</option>
+<option>What is your pet name?</option>
+<option>What is your first school's name?</option>
+<option>What is your nick name?</option>
+<option>What is the name of your favourite food?</option>
+</td></tr>
+<tr><td>
+<font color=#1b2631>
+Security answer:
+</font></td>
+<td><input type=text name=ans>
+</td></tr>
+<tr align="center"><td colspan=2>
+<p><h4><a >Cancel</a></h4></p>
+<input type=submit name="sub1" value="add acount" onclick="return check()">
+<div id="div1"></div>
+<input type=reset value=reset>
+</td></tr>
+</table>
+</table>    
+                
+                            
+                <div class="cleaner"></div>
+            </div>
+            
+            <div class="cleaner"></div>
+        </div>
+    
+    	<div class="cleaner"></div>
+    </div> <!-- end of content wrapper -->
+</div> <!-- end of content wrapper -->
+
+<div id="templatemo_footer_wrapper" style="color:#FDFEFE;">
+
+	<div id="templatemo_footer">
+    	
+        <div class="section_w180" style="color:#FDFEFE;">
+        	<div class="header_05">Services</div>
+            <div class="section_w180_content"> 
+            	<ul class="footer_menu_list">
+                    <li><a href="#">Destination Wedding</a></li>
+                    <li><a href="#">Theme Wedding</a></li>
+                    <li><a href="#">Donec quam</a></li>
+                    <li><a href="#">Nulla consequat</a></li>
+                    <li><a href="#">In enim justo</a></li>              
+                </ul>
+			</div>
+        </div>
+        
+        <div class="section_w180">
+        	<div class="header_05">About</div>
+            <div class="section_w180_content">
+                <ul class="footer_menu_list">
+                    <li><a href="#">Nullam quis</a></li>
+                    <li><a href="#">Sed consequat</a></li>
+                    <li><a href="#">Cras dapibus</a></li> 
+                    <li><a href="#">Lorem ipsum dolor</a></li>
+                    <li><a href="#">Cum sociis</a></li>                
+                </ul>
+            </div>
+        </div>
+                
+        <div class="section_w180">
+        	<div class="header_05">Cool links</div>
+            <div class="section_w180_content"> 
+                <ul class="footer_menu_list">
+                    <li><a href="#">Aenean vulputate</a></li>
+                    <li><a href="#">Etiam ultricies</a></li>
+                    <li><a href="#">Nullam quis</a></li>
+                    <li><a href="#">Sed consequat</a></li>
+                    <li><a href="#">Cras dapibus</a></li>             
+                </ul>
+			</div>
+        </div>
+        
+        <div class="section_w180">
+	        <div class="header_05">Contact</div>
+            
+            <div class="section_w180_content">
+            
+                <ul class="footer_menu_list">
+				  <li><a href="#">Mail us</a></li> 
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instragram</a></li>        
+                    
+                </ul>
+			</div>
+        </div>
+        
+        <div class="section_w180">
+			<div class="header_05">Partners</div>  
+            <div class="section_w180_content">      
+                <ul class="footer_menu_list">
+                    <li><a href="http://www.templatemo.com" target="_parent">CSS Templates</a></li>
+                    <li><a href="http://www.flashmo.com" target="_parent">Flash Websites</a></li>
+                    <li><a href="http://www.templatemo.com/page/2" target="_parent">Website Templates</a></li>
+                    <li><a href="http://www.webdesignmo.com" target="_parent">Web Design Tips</a></li>
+                    <li><a href="http://www.photovaco.com" target="_blank">Free Stock Photos</a></li>
+                </ul>
+			</div>
+        </div>
+        
+        <div class="margin_bottom_20"></div>
+        <a href="#">Magnum Wedding Planner</a> | 
+        <div class="cleaner"></div>
+  
+</html>
